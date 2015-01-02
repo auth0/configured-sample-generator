@@ -104,13 +104,13 @@ This is the `index.js` object.
 
 #### new PackerConfigurer(options)
 
-**All constructor parameters are optionals**. They can be specified later on in the `Packer`.
+**All constructor parameters are optionals**. They can be specified later on in the [`Packer`](https://github.com/auth0/configurated-sample-generator#packer).
 
 * `organization`: Name of the Github organization.
 * `repository`: Name of the Github repository.
 * `gitBranch`: Name of the git branch to use
 * `examplePath`: Path to the example if not the root folder
-* `sampleType`: Sample type to use. Check [Type processors]() section
+* `sampleType`: Sample type to use. Check [Type processors](https://github.com/auth0/configurated-sample-generator#addtypeprocesorname-function) section
 * `configurationFilePath`: Path of the file to be used to configure. This will be used if we're going to replace the content of a file instead of actually creating a new one.
 
 #### setInformationLoader(loaderFunction)
@@ -128,7 +128,7 @@ The loaderFunction will load user configuration values from somewhere and add th
 
 #### addTypeProcesor(name, function)
 
-This adds a new Type Processor. A type processor is a function that will create or modify an existing file from the example with user configuration values that were loaded with the [Information Loader](). The function sent as a parameter receives the `context` as a parameter and returns either the `context` itself or a promise of a `context`. It can leverage the `context.examplePath` and `context.configurationFilePath` to know where to create the configuration file or which file to modify. 
+This adds a new Type Processor. A type processor is a function that will create or modify an existing file from the example with user configuration values that were loaded with the [Information Loader](https://github.com/auth0/configurated-sample-generator#setinformationloaderloaderfunction). The function sent as a parameter receives the `context` as a parameter and returns either the `context` itself or a promise of a `context`. It can leverage the `context.examplePath` and `context.configurationFilePath` to know where to create the configuration file or which file to modify. 
 
 For example:
 
@@ -189,7 +189,7 @@ Returns the `Packer` prototype to be used to create the sample projects
 
 #### new Packer(options)
 
-The packer constructor can receive the same options as the [PackerConfigurer constructor](). Besides that, it can receive an extra `contextInformation` property with any information that the `context` object should be bootstrapped with.
+The packer constructor can receive the same options as the [PackerConfigurer constructor](https://github.com/auth0/configurated-sample-generator#new-packerconfigureroptions). Besides that, it can receive an extra `contextInformation` property with any information that the `context` object should be bootstrapped with.
 
 #### create
 
@@ -222,5 +222,5 @@ This project is used throughout to generate samples for the [Auth0](https://auth
 
 ## Examples
 
-In the [example folder]() :).
+In the [example folder](https://github.com/auth0/configurated-sample-generator/tree/master/example) :).
 
