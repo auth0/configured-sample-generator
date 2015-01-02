@@ -181,7 +181,7 @@ Replaces the content of an existing configuration file. It receives the `context
 }))
 ````
 
-##### getPacker
+#### getPacker
 
 Returns the `Packer` prototype to be used to create the sample projects
 
