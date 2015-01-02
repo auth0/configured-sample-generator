@@ -7,6 +7,7 @@ var _     = require('lodash'),
   util    = require('util');
 
 function PackerConfigurer(options) {
+  options = options || {};
   this.organization = options.organization;
   this.types = {
     noop: _.identity

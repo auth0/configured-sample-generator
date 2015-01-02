@@ -1,0 +1,20 @@
+{
+  "name": "auth0-package-creator",
+  "version": "0.3.0",
+  "description": "Auth0 Package creator with custom info",
+  "repository": "git://github.com/auth0/auth0-package-creator",
+  "author": "Martin Gontovnikas",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.2.2",
+    "body-parser": "^1.4.3",
+    "configurated-sample-generator": "file:../",
+    "debug": "^1.0.3",
+    "express": "^4.4.5",
+    "lodash": "^2.4.1",
+    "morgan": "^1.1.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}

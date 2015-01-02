@@ -37,7 +37,7 @@ module.exports = new PackerConfigurer({
     });
   })
   // This is for Server side samples. Creates a .env file
-  .addTypeProcesor('server', Packager.envFileCreator(function(context) {
+  .addTypeProcesor('server', PackerConfigurer.envFileCreator(function(context) {
     return {
       // This we got from the request
       'CLIENT_ID': context.clientId,
@@ -47,7 +47,7 @@ module.exports = new PackerConfigurer({
   }))
   // This is for a .Net project for examle. It'll replace the `{CLIENT_ID}` from the 
   // app.config for the real value we got
-  .addTypeProcesor('searchAndReplaceConfig', Packager.fileReplacer(function(context, contents) {
+  .addTypeProcesor('searchAndReplaceConfig', PackerConfigurer.fileReplacer(function(context, contents) {
       return contents
         .replace('{CLIENT_ID}', context.clientId)
         .replace('{CLIENT_SECRET}', context.secret)
@@ -149,7 +149,7 @@ This library comes with 3 helper TypeProcessor creators which will work for most
 Creates a new file in the example folder. Receives a `context` as a parameter and returns an object with the `name` and `content` fields for the file name and file contents respectively
 
 ````js
-.addTypeProcesor('myType', Packager.fileWriter(function(context) {
+.addTypeProcesor('myType', PackerConfigurer.fileWriter(function(context) {
   return {
     name: 'app.config',
     content: 'This is user content ' + context.someVariable
@@ -162,7 +162,7 @@ Creates a new file in the example folder. Receives a `context` as a parameter an
 Creates a new `.env`. Returns a key value object with the configurations to put in the `.env` file
 
 ````js
-.addTypeProcesor('myType', Packager.envFileCreator(function(context) {
+.addTypeProcesor('myType', PackerConfigurer.envFileCreator(function(context) {
   return {
     myKey: context.keyValue
   }
@@ -174,7 +174,7 @@ Creates a new `.env`. Returns a key value object with the configurations to put 
 Replaces the content of an existing configuration file. It receives the `context` and the content of the file specified in the `configurationFilePath` variable and returns the new content of the file.
 
 ````js
-.addTypeProcesor('searchAndReplaceConfig', Packager.fileReplacer(function(context, contents) {
+.addTypeProcesor('searchAndReplaceConfig', PackerConfigurer.fileReplacer(function(context, contents) {
     return contents
       .replace('{CLIENT_ID}', context.clientId)
       .replace('{CLIENT_SECRET}', context.secret)
@@ -222,5 +222,5 @@ This project is used throughout to generate samples for the [Auth0](https://auth
 
 ## Examples
 
-Coming soon :D
+In the [example folder]() :).
 
