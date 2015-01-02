@@ -15,11 +15,12 @@ var Promise = require('bluebird'),
 temp.track();
 
 function Packer(configuration, options) {
-  this.repo = options.repository;
-  this.branch = options.gitBranch;
-  this.path = options.examplePath;
-  this.type = options.sampleType || 'noop';
-  this.filePath = options.configurationFilePath || this.path;
+  this.organization = options.organization || configuration.organization;
+  this.repo = options.repository || configuration.repository;
+  this.branch = options.gitBranch || configuration.gitBranch;
+  this.path = options.examplePath || configuration.examplePath || '.';
+  this.type = options.sampleType ||  configuration.sampleType || 'noop' ;
+  this.filePath = options.configurationFilePath || configuration.configurationFilePath || this.path;
   this.contextInformation = options.contextInformation;
   this.config = configuration;
 }
@@ -39,7 +40,7 @@ Packer.GITHUB_URL = 'https://github.com/%s/%s/archive/%s.tar.gz';
 
 Packer.prototype.download = function() {
   var _this = this;
-  var url = util.format(Packer.GITHUB_URL, this.config.organization, this.repo, this.branch);
+  var url = util.format(Packer.GITHUB_URL, this.organization, this.repo, this.branch);
 
   debug("Downloading file from URL", url);
 

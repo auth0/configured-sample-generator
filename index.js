@@ -6,7 +6,7 @@ var _     = require('lodash'),
   packer  = require('./packer'),
   util    = require('util');
 
-function Configurer(options) {
+function PackerConfigurer(options) {
   this.organization = options.organization;
   this.types = {
     noop: _.identity
@@ -14,21 +14,21 @@ function Configurer(options) {
   this.infoLoader = _.identity;
 }
 
-Configurer.prototype.addTypeProcesor = function(name, fn) {
+PackerConfigurer.prototype.addTypeProcesor = function(name, fn) {
   this.types[name] = fn;
   return this;
 }
 
-Configurer.prototype.setInformationLoader = function(fn) {
+PackerConfigurer.prototype.setInformationLoader = function(fn) {
   this.infoLoader = fn;
   return this;
 }
 
-Configurer.prototype.getPacker = function() {
+PackerConfigurer.prototype.getPacker = function() {
   return _.partial(packer, this);
 }
 
-Configurer.fileWriter = function(fn) {
+PackerConfigurer.fileWriter = function(fn) {
   return function fileWriter(context) {
     var fileDesc = fn(context);
     return fs.writeFileAsync(path.join(context.examplePath, fileDesc.name), fileDesc.content, {flags: 'w'}).then(function() {
@@ -39,8 +39,8 @@ Configurer.fileWriter = function(fn) {
 };
 
 
-Configurer.envFileCreator = function(fn) {
-  return Configurer.fileWriter(function(context) {
+PackerConfigurer.envFileCreator = function(fn) {
+  return PackerConfigurer.fileWriter(function(context) {
     var env = _.map(fn(context), function(value, key) {
       return util.format('%s=%s', key, value);
     }).join(' \n');
@@ -52,7 +52,7 @@ Configurer.envFileCreator = function(fn) {
 };
 
 
-Configurer.fileReplacer = function(fn) {
+PackerConfigurer.fileReplacer = function(fn) {
   return function searchAndReplaceConfig(context) {
     return fs.readFileAsync(context.configurationFilePath)
       .then(function(contents) {
@@ -69,4 +69,4 @@ Configurer.fileReplacer = function(fn) {
     };
 }
 
-module.exports = Configurer;
+module.exports = PackerConfigurer;
