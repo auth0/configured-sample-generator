@@ -1,0 +1,21 @@
+{
+  "name": "configurated-sample-generator",
+  "version": "0.1.0",
+  "description": "Generates sample projects from a Github repository with some added user configuration",
+  "repository": "git://github.com/auth0/configurated-sample-generator",
+  "author": "Martin Gontovnikas",
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^0.10.1",
+    "bluebird": "^2.2.2",
+    "debug": "^1.0.3",
+    "lodash": "^2.4.1",
+    "request": "^2.37.0",
+    "stream-to-promise": "^0.1.0",
+    "tar": "^0.1.20",
+    "temp": "^0.8.0",
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
