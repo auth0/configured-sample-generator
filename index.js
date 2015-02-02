@@ -32,7 +32,7 @@ PackerConfigurer.prototype.getPacker = function() {
 PackerConfigurer.fileWriter = function(fn) {
   return function fileWriter(context) {
     var fileDesc = fn(context);
-    return fs.writeFileAsync(path.join(context.examplePath, fileDesc.name), fileDesc.content, {flags: 'w'}).then(function() {
+    return fs.writeFileAsync(path.join(context.configurationFilePath || context.examplePath, fileDesc.name), fileDesc.content, {flags: 'w'}).then(function() {
       debug("File created");
       return context;
     });
