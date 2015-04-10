@@ -15,6 +15,7 @@ var Promise = require('bluebird'),
 temp.track();
 
 function Packer(configuration, options) {
+  this.validate(options);
   this.organization = options.organization || configuration.organization;
   this.repo = options.repository || configuration.repository;
   this.branch = options.gitBranch || configuration.gitBranch;
@@ -23,6 +24,16 @@ function Packer(configuration, options) {
   this.filePath = options.configurationFilePath || configuration.configurationFilePath || this.path;
   this.contextInformation = options.contextInformation;
   this.config = configuration;
+}
+
+Packer.prototype.validate = function(options) {
+  if (options.examplePath) {
+    if (options.examplePath.indexOf('.') === 0 ||
+      options.examplePath.indexOf('/') === 0 ||
+      options.examplePath.indexOf('..') > -1) {
+      throw new Error("The path you have entered is invalid");
+    }
+  }
 }
 
 Packer.prototype.create = function() {
