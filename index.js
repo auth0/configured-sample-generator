@@ -47,7 +47,7 @@ PackerConfigurer.envFileCreator = function(fn) {
     }).join(' \n');
     return {
       name: '.env',
-      content: env
+      content: env + '\n'
     };
   });
 };
