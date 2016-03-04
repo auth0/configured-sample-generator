@@ -1,6 +1,6 @@
 {
   "name": "configurated-sample-generator",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "main": "index.js",
   "description": "Generates sample projects from a Github repository with some added user configuration",
   "repository": "git://github.com/auth0/configurated-sample-generator",
