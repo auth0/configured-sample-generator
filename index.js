@@ -1,8 +1,8 @@
 var _     = require('lodash'),
-  Promise = require('bluebird'),
+  Bluebird = require('bluebird'),
   path    = require('path'),
   debug   = require('debug')('configurated-sample-generator'),
-  fs      = Promise.promisifyAll(require('fs')),
+  fs      = Bluebird.promisifyAll(require('fs')),
   packer  = require('./packer'),
   util    = require('util');
 
