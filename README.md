@@ -1,6 +1,6 @@
 # Configured sample generator
 
-** WARNING - THIS PROJECT IS NO LONGER MAINTAINED!!! **
+**WARNING - THIS PROJECT IS NO LONGER MAINTAINED!!!**
 
 
 Generates sample projects from a Github repository with some added user configuration. This package lets you create tailored samples for each of your users that have everything configured to just start using them. 
